@@ -1,6 +1,6 @@
 # Yelp Clone
 
-## Using Ruby on Rails to build a restaurant review app.
+## Using Ruby on Rails to build a restaurant review application.
 
 - Ruby Version: 2.3.1
 
@@ -27,4 +27,3 @@
                 web-console 2.0
 
                 spring
-                
