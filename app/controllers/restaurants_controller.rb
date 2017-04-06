@@ -1,7 +1,14 @@
 class RestaurantsController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
+  before_action :restaurant_owner, only: [:edit, :delete]
 
+  def restaurant_owner
+    unless @restaurant.user_id == current_user.id
+      flash[:notice] = "restaurant not yours"
+      redirect_to '/restaurants'
+    end
+  end
 
   def index
     @restaurants = Restaurant.all
