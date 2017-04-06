@@ -13,4 +13,6 @@ describe Restaurant, type: :model do
     expect(restaurant).to have(1).error_on(:name)
   end
 
+  it {should belong_to(:user).with_foreign_key('user_id') }
+
 end

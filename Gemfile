@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 
+gem 'shoulda', '~> 3.5'
 gem 'omniauth-facebook'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -43,6 +44,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'rspec-collection_matchers'
+  gem 'shoulda-matchers'
 end
 
 group :development do
