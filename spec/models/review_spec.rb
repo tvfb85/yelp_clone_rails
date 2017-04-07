@@ -6,5 +6,5 @@ describe Review, type: :model do
     expect(review).to have(1).error_on(:rating)
   end
 
-  it {should belong_to(:restaurant).with_foreign_key('restaurant_id') }
+  it {should belong_to(:restaurant) }
 end
