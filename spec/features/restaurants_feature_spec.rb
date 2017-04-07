@@ -75,7 +75,7 @@ feature 'restaurants' do
   context 'editing restaurants' do
 
     before { Restaurant.create name: 'KFC', description: 'Deep fried goodness', id: 1 }
-    scenario 'let a user edit a restaurant' do
+    scenario 'a user cannot edit restaurants they did not create' do
       visit '/restaurants'
       click_link 'Sign up'
       fill_in('Email', with: 'test@example.com')
@@ -86,10 +86,12 @@ feature 'restaurants' do
       fill_in 'Name', with: 'Kentucky Fried Chicken'
       fill_in 'Description', with: 'Deep fried goodness'
       click_button 'Update Restaurant'
-      click_link 'Kentucky Fried Chicken'
-      expect(page).to have_content 'Kentucky Fried Chicken'
-      expect(page).to have_content 'Deep fried goodness'
-      expect(current_path).to eq '/restaurants/1'
+      expect(page).to have_content 'Not your restaurant, mate!'
+
+      # click_link 'Kentucky Fried Chicken'
+      # expect(page).to have_content 'Kentucky Fried Chicken'
+      # expect(page).to have_content 'Deep fried goodness'
+      # expect(current_path).to eq '/restaurants/1'
     end
   end
 
@@ -104,8 +106,10 @@ feature 'restaurants' do
       fill_in('Password confirmation', with: 'testtest')
       click_button('Sign up')
       click_link 'Delete KFC'
-      expect(page).not_to have_content 'KFC'
-      expect(page).to have_content 'Restaurant deleted successfully'
+      expect(page).to have_content 'Not your restaurant, mate!'
+
+      # expect(page).not_to have_content 'KFC'
+      # expect(page).to have_content 'Restaurant deleted successfully'
     end
   end
 
