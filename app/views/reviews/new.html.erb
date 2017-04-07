@@ -5,3 +5,14 @@
   <%= f.select :rating, (1..5) %>
   <%= f.submit 'Leave Review' %>
 <% end %>
+
+<% if @review.errors.any? %>
+  <section id="errors" >
+    <h2> <%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved: </h2>
+    <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
